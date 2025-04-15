@@ -9,7 +9,6 @@ const app = express();
 const PORT = 3000;
 
 // Chemins vers les outils MCP
-const DOLPHIN_MCP_PATH = path.resolve('C:/Users/DorianDOUSSAIN/Documents/projects/tools/dolphin-mcp');
 const OBSIDIAN_VAULT_PATH = path.resolve('E:/obsidian');
 const NOTES_FOLDER = 'Notes Capturées';
 
@@ -253,7 +252,7 @@ async function createObsidianNote(filePath, content) {
 
 // Démarrer le serveur
 app.listen(PORT, () => {
-  console.log(`Serveur MCP en écoute sur le port ${PORT}`);
+  console.log(`Serveur écoute sur le port ${PORT}`);
   console.log(`Obsidian vault: ${OBSIDIAN_VAULT_PATH}`);
   
   // Vérifier si Ollama est accessible au démarrage

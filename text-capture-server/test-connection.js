@@ -3,10 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 // Chemins
-const DOLPHIN_MCP_PATH = path.resolve('C:/Users/DorianDOUSSAIN/Documents/projects/tools/dolphin-mcp');
 const OBSIDIAN_VAULT_PATH = path.resolve('E:/obsidian');
 
-console.log('=== Test de connectivité aux services MCP ===');
+console.log('=== Test de connectivité aux services ===');
 
 // Test 1: Vérifier Python
 console.log('\n1. Test de Python...');
@@ -17,24 +16,8 @@ exec('python --version', (err, stdout, stderr) => {
     console.log(`✅ Python détecté: ${stdout.trim()}`);
   }
   
-  // Test 2: Vérifier l'accès au répertoire Dolphin-MCP
-  console.log('\n2. Test d\'accès au répertoire Dolphin-MCP...');
-  if (fs.existsSync(DOLPHIN_MCP_PATH)) {
-    console.log(`✅ Répertoire Dolphin-MCP accessible: ${DOLPHIN_MCP_PATH}`);
-    
-    // Vérifier le fichier dolphin_mcp.py
-    const dolphinPyPath = path.join(DOLPHIN_MCP_PATH, 'dolphin_mcp.py');
-    if (fs.existsSync(dolphinPyPath)) {
-      console.log(`✅ Fichier dolphin_mcp.py trouvé: ${dolphinPyPath}`);
-    } else {
-      console.error(`❌ Fichier dolphin_mcp.py non trouvé à: ${dolphinPyPath}`);
-    }
-  } else {
-    console.error(`❌ Répertoire Dolphin-MCP inaccessible: ${DOLPHIN_MCP_PATH}`);
-  }
-  
-  // Test 3: Vérifier l'accès au coffre Obsidian
-  console.log('\n3. Test d\'accès au coffre Obsidian...');
+  // Test 2: Vérifier l'accès au coffre Obsidian
+  console.log('\n2. Test d\'accès au coffre Obsidian...');
   if (fs.existsSync(OBSIDIAN_VAULT_PATH)) {
     console.log(`✅ Coffre Obsidian accessible: ${OBSIDIAN_VAULT_PATH}`);
     
@@ -55,8 +38,8 @@ exec('python --version', (err, stdout, stderr) => {
     console.error(`❌ Coffre Obsidian inaccessible: ${OBSIDIAN_VAULT_PATH}`);
   }
   
-  // Test 4: Vérifier Ollama (si utilisé)
-  console.log('\n4. Test de connexion à Ollama...');
+  // Test 3: Vérifier Ollama
+  console.log('\n3. Test de connexion à Ollama...');
   exec('curl -s http://localhost:11434/api/tags', (ollamaErr, ollamaOut) => {
     if (ollamaErr) {
       console.error('❌ Impossible de se connecter à Ollama. Erreur:', ollamaErr.message);
